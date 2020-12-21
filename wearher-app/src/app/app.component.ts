@@ -75,7 +75,6 @@ export class AppComponent implements OnInit{
 
   // returns a 10 day average temperature
   getAvgTemp(){
-    console.log(this.city)
     let avgTemp = this.forcastData?.reduce((total, next, index) => {
       if(index < 10){
         return total + next.temp

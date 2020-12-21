@@ -34,9 +34,20 @@
 }
 
 .country-select {
+	height: 48px;
 	width: 60px;
 	min-width: 60px;
-	margin: calc((92px - 24px) / 2) 8px;
+	margin: calc((92px - 48px) / 2) 8px;
+	border: 1px solid rgba(8, 21, 62, 0.05);
+	border-radius: 6px;
+}
+
+::ng-deep .mat-select-trigger {
+	height: 48px;
+}
+
+::ng-deep .mat-select-value {
+	vertical-align: middle;
 }
 .city-input {
 	width: 400px;
