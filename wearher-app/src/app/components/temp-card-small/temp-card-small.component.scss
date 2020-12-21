@@ -13,6 +13,7 @@ ul > li {
 }
 
 .weekly-forcast {
+	margin: 0 auto;
 	padding-inline-start: 0px;
 	li {
 		width: 90px;
@@ -52,4 +53,8 @@ ul > li {
 			line-height: 24px;
 		}
 	}
+}
+.center {
+	margin: 0 auto;
+	width: fit-content;
 }

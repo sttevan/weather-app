@@ -1,10 +1,10 @@
 <div ngClass="weekly-forcast-wrapper">
     <ul ngClass="weekly-forcast">
         <li *ngFor="let dayForcast of shortInfo; trackBy: trackByFn">
-            <div ngClass="weekly-forcast-day">
-                {{dayForcast.date | date:'EEEE'}}
+            <div ngClass="weekly-forcast-day center">
+                {{dayForcast.date | date:'EEEE' | uppercase}}
             </div>
-            <div ngClass="weekly-forcast-temp">
+            <div ngClass="weekly-forcast-temp center">
                     {{ dayForcast.temp | number:'1.0-0'}}
                     <span ngClass="weekly-forcast-temp-symbol">&#8451;</span>
             </div>
