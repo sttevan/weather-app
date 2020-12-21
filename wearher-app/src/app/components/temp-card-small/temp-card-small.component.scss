@@ -1,0 +1,55 @@
+ul > li {
+	display: inline-block;
+	/* You can also add some margins here to make it look prettier */
+	zoom: 1;
+	*display: inline;
+	/* this fix is needed for IE7- */
+}
+
+.weekly-forcast-wrapper {
+	min-width: 635px;
+	width: 632px;
+	margin: 0 auto;
+}
+
+.weekly-forcast {
+	padding-inline-start: 0px;
+	li {
+		width: 90px;
+	}
+
+	&-day {
+		font-family: Poppins;
+		font-style: normal;
+		font-weight: 600;
+		font-size: 12px;
+		line-height: 24px;
+		/* identical to box height, or 200% */
+
+		display: flex;
+		align-items: center;
+		text-align: center;
+		letter-spacing: 0.06em;
+
+		color: #08153e;
+
+		opacity: 0.6;
+	}
+	&-temp {
+		font-family: Poppins;
+		font-style: normal;
+		font-weight: 600;
+		font-size: 24px;
+		line-height: 32px;
+
+		display: flex;
+		text-align: right;
+
+		color: ivory;
+
+		&-symbol {
+			font-size: 14px;
+			line-height: 24px;
+		}
+	}
+}
