@@ -11,7 +11,9 @@ export class TempCardSmallComponent implements OnInit {
   constructor() { }
 
   ngOnInit(): void {
-   this.shortInfo =  this.forcastInfo?.splice(0,7)
+   this.shortInfo =  this.forcastInfo?.filter((item, index)=>{
+     return index < 7; //only show first 7 days 
+   })
   }
 
   trackByFn(index: number) {

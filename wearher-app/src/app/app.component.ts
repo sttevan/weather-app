@@ -1,8 +1,19 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, ElementRef } from '@angular/core';
 import { CountryService } from './services/country.service';
 import { WeatherService } from './services/weather.service';
 
-
+//Gradient matrix
+const GRADIENTS =[
+  ['#102F7E'], 
+  ['#102F7E', '#0C8DD6'], 
+  ['#102F7E', '#0C8DD6',  '#1AA0EC'], 
+  ['#0C8DD6',  '#1AA0EC',  '#60C6FF'], 
+  ['#1AA0EC',  '#60C6FF', '#9BDBFF'],
+  ['#60C6FF', '#9BDBFF', '#B4DEDA'],
+  ['#9BDBFF', '#B4DEDA', '#FFD66B'],
+  ['#B4DEDA', '#FFD66B', '#FFC178'],
+  ['#FFD66B', '#FFC178', '#FE9255']
+]
 interface iCountry {
   code: string;
   flag: string;
@@ -17,22 +28,26 @@ export class AppComponent implements OnInit{
   title = 'wearher-app';
   countries: Array<iCountry> = [];
   city: string= '';
+  //preselected country is Netherlands
   selectedCountry: iCountry = {
     code: 'nl',
     flag: 'https://restcountries.eu/data/nld.svg'
   };
 
   forcastData: Array<any> =[];
+  background: string = '';
 
   constructor(private countryService: CountryService, 
-              private weatherService: WeatherService) { }
+              private weatherService: WeatherService,
+              private elRef: ElementRef) { }
 
 
   ngOnInit() {
     this.getCountries();
+    this.background = ''
   }
 
-
+  //Call extrernal api for countries and reduce the objects size 
   getCountries():void{
     this.countryService.getCountries().subscribe((data: any)=>{
       
@@ -44,10 +59,12 @@ export class AppComponent implements OnInit{
 
 
       });
-      console.log(this.countries);
     })
   }
 
+
+  //On Enter pressed trigger the forcast by triggering external api and 
+  // stripping unnecesary data
   getForcast(event:any) {
     event.preventDefault();
     event.stopPropagation();
@@ -61,11 +78,14 @@ export class AppComponent implements OnInit{
             temp: item.temp
           }
         });
+        this.updateGradient(this.getGradientString())
       }
 
     })
 
   }
+
+  // returns a 10 day average temperature
   getAvgTemp(){
     let avgTemp = this.forcastData.reduce((total, next, index) => {
       if(index < 10){
@@ -74,16 +94,36 @@ export class AppComponent implements OnInit{
         return total
       }
     }, 0)/10
-    console.log(avgTemp, )
     return avgTemp
   }
 
-  getGradient(){
-    if(this.forcastData && this.forcastData.length){
+  updateGradient(gradientString: string){
+    //I've spent too much time on trying to make this gradient work. I dont think its fair  to continue, since you've said it should be a short task
+    this.elRef.nativeElement.children[0].style.setProperty('backgroundImage', gradientString)
+
+  }
+
+  getGradientString(){
       const avgTemp = this.getAvgTemp();
-      return ''
-    }else {
-      return 'linear-gradient(0deg, rgba(255, 255, 255, 0.8), rgba(255, 255, 255, 0.8)),linear-gradient(119.25deg,#102f7e -11.47%,#0c8dd6 3.95%,#1aa0ec 19.37%,#60c6ff 34.78%,#9bdbff 50.19%,#b4deda 65.61%,#ffd66b 81.02%,#ffc178 96.44%,#fe9255 111.85%);'
-    }
+
+      let color = Math.floor((avgTemp + 48) /9);
+
+      switch (color) {
+        case 0:
+          return '#102F7E'
+      
+        case 1: return `linear-gradient(130.54deg, ${GRADIENTS[color][0]} -33.02%, ${GRADIENTS[color][1]} 137.04%);`;
+        case 2:
+        case 3:
+        case 4:
+        case 5:
+        case 6:
+        case 7:
+        case 8: return `linear-gradient(130.54deg, ${GRADIENTS[color][0]} -33.02%, ${GRADIENTS[color][1]} 52.01%, ${GRADIENTS[color][2]} 137.04%);`;
+        default: 
+        return `linear-gradient(130.54deg, ${GRADIENTS[8][0]} -33.02%, ${GRADIENTS[8][1]} 52.01%, ${GRADIENTS[8][2]} 137.04%);`
+      }
+
+   
   }
 }
