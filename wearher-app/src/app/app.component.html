@@ -1,6 +1,6 @@
 
 
-<div ngClass="content">
+<div  [ngClass]="forcastData && forcastData.length ? 'content bg-image-'+ getIndex() : 'content bg-image-base'">
   <div ngClass="input-wrapper"  [class.input-wrapper-with-forcast]="forcastData && forcastData.length">
     <div>
       <img src="/assets/icons/weather.png" ngClass="weather-icon-center" alt="cloud" width="48" height="48"/>

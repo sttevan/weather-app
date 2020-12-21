@@ -2,19 +2,6 @@
 	position: absolute;
 	width: 100%;
 	height: 100%;
-	background-image: linear-gradient(0deg, rgba(255, 255, 255, 0.8), rgba(255, 255, 255, 0.8)),
-		linear-gradient(
-			119.25deg,
-			#102f7e -11.47%,
-			#0c8dd6 3.95%,
-			#1aa0ec 19.37%,
-			#60c6ff 34.78%,
-			#9bdbff 50.19%,
-			#b4deda 65.61%,
-			#ffd66b 81.02%,
-			#ffc178 96.44%,
-			#fe9255 111.85%
-		);
 }
 .input-wrapper {
 	width: 100%;
@@ -53,4 +40,56 @@
 	width: 400px;
 	height: 48px;
 	margin: calc((92px - 48px) / 2) 8px;
+}
+
+.bg-image-base {
+	background-image: linear-gradient(0deg, rgba(255, 255, 255, 0.8), rgba(255, 255, 255, 0.8)),
+		linear-gradient(
+			119.25deg,
+			#102f7e -11.47%,
+			#0c8dd6 3.95%,
+			#1aa0ec 19.37%,
+			#60c6ff 34.78%,
+			#9bdbff 50.19%,
+			#b4deda 65.61%,
+			#ffd66b 81.02%,
+			#ffc178 96.44%,
+			#fe9255 111.85%
+		);
+}
+
+.bg-image-0 {
+	background-image: #102f7e;
+}
+
+.bg-image-1 {
+	background-image: linear-gradient(130.54deg, #102f7e -33.02%, #0c8dd6 137.04%);
+}
+
+.bg-image-2 {
+	background-image: linear-gradient(130.54deg, #102f7e -33.02%, #0c8dd6 52.01%, #1aa0ec 137.04%);
+}
+
+.bg-image-3 {
+	background-image: linear-gradient(130.54deg, #0c8dd6 -33.02%, #1aa0ec 52.01%, #60c6ff 137.04%);
+}
+
+.bg-image-4 {
+	background-image: linear-gradient(130.54deg, #1aa0ec -33.02%, #60c6ff 52.01%, #9bdbff 137.04%);
+}
+
+.bg-image-5 {
+	background-image: linear-gradient(130.54deg, #60c6ff -33.02%, #9bdbff 52.01%, #b4deda 137.04%);
+}
+
+.bg-image-6 {
+	background-image: linear-gradient(130.54deg, #9bdbff -33.02%, #b4deda 52.01%, #ffd66b 137.04%);
+}
+
+.bg-image-7 {
+	background-image: linear-gradient(130.54deg, #b4deda -33.02%, #ffd66b 52.01%, #ffc178 137.04%);
+}
+
+.bg-image-8 {
+	background-image: linear-gradient(130.54deg, #ffd66b -33.02%, #ffc178 52.01%, #fe9255 137.04%);
 }
