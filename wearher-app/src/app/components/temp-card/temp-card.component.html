@@ -1,0 +1,9 @@
+<div ngClass="avg-temperature-card">
+    <div ngClass="avg-temperature-card-header">
+        {{dateRangeTitle}}
+    </div>
+    <div ngClass="avg-temperature-card-content">
+            {{ temp | number:'1.0-0'}}
+            <span ngClass="avg-temperature-card-content-symbol">&#8451;</span>
+    </div>
+</div>

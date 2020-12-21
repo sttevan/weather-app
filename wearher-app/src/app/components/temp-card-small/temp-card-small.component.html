@@ -1,0 +1,13 @@
+<div ngClass="weekly-forcast-wrapper">
+    <ul ngClass="weekly-forcast">
+        <li *ngFor="let dayForcast of forcastInfo">
+            <div ngClass="weekly-forcast-day">
+                {{dayForcast.date | date:'EEEE'}}
+            </div>
+            <div ngClass="weekly-forcast-temp">
+                    {{ dayForcast.temp | number:'1.0-0'}}
+                    <span ngClass="weekly-forcast-temp-symbol">&#8451;</span>
+            </div>
+        </li>
+    </ul>
+</div>
