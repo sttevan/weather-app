@@ -6,6 +6,8 @@ interface iCountry {
   code: string;
   flag: string;
 }
+
+const DEFAULT_PLACEHOLDER = 'Please enter your location...';
 @Component({
   selector: 'app-root',
   templateUrl: './app.component.html',
@@ -14,6 +16,7 @@ interface iCountry {
 export class AppComponent implements OnInit{
 
   title = 'wearher-app';
+  placeholder = DEFAULT_PLACEHOLDER;
   countries: Array<iCountry> = [];
   city: string= '';
   //preselected country is Netherlands
@@ -72,6 +75,7 @@ export class AppComponent implements OnInit{
 
   // returns a 10 day average temperature
   getAvgTemp(){
+    console.log(this.city)
     let avgTemp = this.forcastData?.reduce((total, next, index) => {
       if(index < 10){
         return total + next.temp
@@ -82,6 +86,18 @@ export class AppComponent implements OnInit{
     return avgTemp
   }
 
+  clearPlaceHolder(){
+    this.placeholder = '';
+  }
+  setPlaceHolder(){
+    
+    if(this.city === ''){
+      this.placeholder = DEFAULT_PLACEHOLDER;
+    }
+    
+  }
+
+  //Get gradient index
   getIndex(){
     return  Math.floor((this.getAvgTemp() + 48) /9);
   }

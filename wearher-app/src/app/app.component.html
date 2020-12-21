@@ -14,7 +14,13 @@
       </mat-option>
     </mat-select>
     <mat-form-field ngClass="city-input">
-      <input value={{city}} name="city" matInput (keyup.enter)="getForcast($event)" placeholder="Please enter your location...">
+      <input value={{city}} 
+             name="city" 
+             matInput 
+             (keyup.enter)="getForcast($event)" 
+             (blur)="setPlaceHolder()"
+             (focus)="clearPlaceHolder()"
+             placeholder={{placeholder}}>
       <mat-icon matSuffix>search</mat-icon>
     </mat-form-field>
   </div>
