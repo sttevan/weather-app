@@ -1,11 +1,13 @@
 
 
-<div class="content" >
-  <div class="input-wrapper">
-    
-    <img src="/assets/icons/weather.png" alt="cloud" width="48" height="48"/>
-    <img src="{{selectedCountry?.flag}}" height="24">
-    <mat-select ngClass="countrySelect" [(value)]="selectedCountry"  name="country">
+<div ngClass="content" [ngStyle]="{'background': getGradient()}" >
+  <div ngClass="input-wrapper"  [class.input-wrapper-with-forcast]="forcastData && forcastData.length">
+    <div>
+      <img src="/assets/icons/weather.png" ngClass="weather-icon-center" alt="cloud" width="48" height="48"/>
+      <img src="{{selectedCountry?.flag}}" ngClass="country-icon-center" height="24">
+    </div>
+  
+    <mat-select ngClass="country-select" [(value)]="selectedCountry"  name="country">
       <mat-option *ngFor="let country of countries" [value]="country">
         <img src="{{country.flag}}" alt="cloud" height="14"/>
           {{country.code}}
@@ -17,13 +19,13 @@
     </mat-form-field>
   </div>
 
-  <div *ngIf="forcastData && forcastData.length">
-    <!-- avgTemp -->
-    <app-temp-card [temp]="getAvgTemp()" [date]="forcastData[0].date"></app-temp-card>
-    <!-- next 7 days -->
-    <app-temp-card-small [forcastInfo]="forcastData.splice(0,7)"></app-temp-card-small>
 
-  </div>
+    <!-- avgTemp -->
+    <app-temp-card *ngIf="forcastData && forcastData.length" [temp]="getAvgTemp()" [date]="forcastData[0].date"></app-temp-card>
+    <!-- next 7 days -->
+    <app-temp-card-small *ngIf="forcastData && forcastData.length" [forcastInfo]="forcastData"></app-temp-card-small>
+
+
 </div>
 
 

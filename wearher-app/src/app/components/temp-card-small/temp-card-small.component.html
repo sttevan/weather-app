@@ -1,6 +1,6 @@
 <div ngClass="weekly-forcast-wrapper">
     <ul ngClass="weekly-forcast">
-        <li *ngFor="let dayForcast of forcastInfo">
+        <li *ngFor="let dayForcast of shortInfo; trackBy: trackByFn">
             <div ngClass="weekly-forcast-day">
                 {{dayForcast.date | date:'EEEE'}}
             </div>

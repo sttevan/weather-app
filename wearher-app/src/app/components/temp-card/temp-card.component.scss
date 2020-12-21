@@ -1,0 +1,41 @@
+.avg-temperature-card {
+	height: 180px;
+	min-width: 180px;
+	background: transparent;
+	margin-top: 24px;
+	margin-left: auto;
+	margin-right: auto;
+	max-width: fit-content;
+	&-header {
+		font-family: Poppins;
+		font-style: normal;
+		font-weight: 600;
+		font-size: 12px;
+		line-height: 24px;
+
+		display: flex;
+		align-items: center;
+		letter-spacing: 0.06em;
+
+		color: #08153e;
+
+		opacity: 0.6;
+	}
+
+	&-content {
+		font-family: Poppins;
+		font-style: normal;
+		font-weight: 600;
+		font-size: 120px;
+		line-height: 120px;
+
+		display: flex;
+		// align-items: center;
+		color: ivory;
+		padding-left: 20px;
+		&-symbol {
+			font-size: 24px;
+			line-height: 32px;
+		}
+	}
+}

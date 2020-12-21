@@ -7,9 +7,15 @@ import { Component, OnInit, Input } from '@angular/core';
 })
 export class TempCardSmallComponent implements OnInit {
   @Input() forcastInfo?: Array<any>;
+  public shortInfo: Array<any> | undefined  = [] ;
   constructor() { }
 
   ngOnInit(): void {
+   this.shortInfo =  this.forcastInfo?.splice(0,7)
+  }
+
+  trackByFn(index: number) {
+    return index;
   }
 
 }

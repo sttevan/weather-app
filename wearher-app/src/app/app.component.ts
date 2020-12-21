@@ -18,7 +18,7 @@ export class AppComponent implements OnInit{
   countries: Array<iCountry> = [];
   city: string= '';
   selectedCountry: iCountry = {
-    code: 'NL',
+    code: 'nl',
     flag: 'https://restcountries.eu/data/nld.svg'
   };
 
@@ -49,7 +49,8 @@ export class AppComponent implements OnInit{
   }
 
   getForcast(event:any) {
-    console.log('get forcast')
+    event.preventDefault();
+    event.stopPropagation();
     this.city = event.target.value;
     this.weatherService.getForcast(this.selectedCountry.code, this.city).subscribe((result: any)=>{
       
@@ -61,7 +62,6 @@ export class AppComponent implements OnInit{
           }
         });
       }
-      console.log(this.forcastData)
 
     })
 
@@ -76,5 +76,14 @@ export class AppComponent implements OnInit{
     }, 0)/10
     console.log(avgTemp, )
     return avgTemp
+  }
+
+  getGradient(){
+    if(this.forcastData && this.forcastData.length){
+      const avgTemp = this.getAvgTemp();
+      return ''
+    }else {
+      return 'linear-gradient(0deg, rgba(255, 255, 255, 0.8), rgba(255, 255, 255, 0.8)),linear-gradient(119.25deg,#102f7e -11.47%,#0c8dd6 3.95%,#1aa0ec 19.37%,#60c6ff 34.78%,#9bdbff 50.19%,#b4deda 65.61%,#ffd66b 81.02%,#ffc178 96.44%,#fe9255 111.85%);'
+    }
   }
 }
